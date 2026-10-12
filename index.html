@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>💗 My Cutie Pie Sister — 10 Questions Challenge 🧸</title>
+    <link rel="icon" type="image/png" href="assets/face-sad.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800;900&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="design.css">
+</head>
+
+<body>
+
+    <!-- Floating hearts and sparkles background -->
+    <div class="hearts-bg" id="heartsBg" aria-hidden="true"></div>
+
+    <!-- Mobile Frame Viewport -->
+    <div class="mobile-viewport">
+        <main class="phone-card" id="mainCard">
+
+            <!-- Progress Header -->
+            <header class="card-header" id="cardHeader">
+                <div class="progress-info">
+                    <span class="badge" id="badgeText">Question 1 of 10</span>
+                    <span class="badge-icon">🎀</span>
+                </div>
+                <div class="progress-bar-wrap">
+                    <div class="progress-bar-fill" id="progressBar" style="width: 10%;"></div>
+                </div>
+            </header>
+
+            <!-- Character Portrait Area (Prominent & Centered) -->
+            <section class="character-section" id="characterSection">
+                <div class="character-frame">
+                    <img id="characterImg" src="assets/face-normal.png" alt="Character Expression" class="character-img">
+                </div>
+            </section>
+
+            <!-- Comic / Chat Callout Message Bubble for Question -->
+            <section class="question-container" id="questionContainer">
+                <div class="chat-bubble-tail-wrap">
+                    <div class="callout-chat-bubble" id="calloutBubble">
+                        <div class="bubble-heart-badge">💌</div>
+                        <h2 class="question-text" id="questionText">
+                            Kya tum mere sabse pyaare bhai ki sabse pyaari behen ho? 🥹💗
+                        </h2>
+                    </div>
+                </div>
+
+                <div class="btn-group" id="btnGroup">
+                    <button type="button" class="btn yes-btn" id="yesBtn" onclick="onYesClick()">
+                        Haan Bhai, Main Hoon! 💖
+                    </button>
+                    <button type="button" class="btn no-btn" id="noBtn" onclick="onNoClick()">
+                        Nahi, Main Nahi Hoon! 🙈
+                    </button>
+                </div>
+            </section>
+
+            <!-- WIN CELEBRATION SCREEN -->
+            <section class="win-screen" id="winScreen" style="display: none;">
+                <div class="final-win-frame">
+                    <img id="finalWinImg" src="assets/final-win.png" alt="Yee I Know It!" class="final-win-img">
+                </div>
+
+                <div class="win-card-box">
+                    <h1 class="win-heading">YEE I LOVE YOU BAHEN! 🥰💖</h1>
+                    <p class="win-text-1">
+                        MUJHE PATA THA! 🥹 Tu hi mere bhai ki sabse pyaari aur sabse sachchi behen hai!
+                    </p>
+                    <p class="win-text-highlight">
+                        Love You Sooooo Much, Meri Cutie Pie Behen! ❤️🫂
+                    </p>
+                </div>
+
+                <button type="button" class="btn restart-btn" id="restartBtn" onclick="restartQuiz()">
+                    🔄 Phir se khele (Restart) 💖
+                </button>
+            </section>
+
+            <!-- Subdued Clean Instagram Attribution Footer -->
+            <footer class="app-credit">
+                design by <a href="https://www.instagram.com/a.l.o.k.3i/" target="_blank" rel="noopener noreferrer">a.l.o.k.3i</a>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- Celebration sparkles & confetti container -->
+    <div id="confettiContainer" aria-hidden="true"></div>
+
+    <!-- Hidden Non-Stop Background Music (Looping forever, no controls) -->
+    <audio id="bgAudio" src="assets/bg-music.mp3" preload="auto" loop></audio>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

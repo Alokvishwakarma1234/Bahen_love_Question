@@ -1,0 +1,564 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+:root {
+    --primary-pink: #ff3377;
+    --deep-pink: #d81b60;
+    --soft-pink: #fff0f6;
+    --candy-pink: #ff6699;
+    --bubble-border: #ff85aa;
+    --white: #ffffff;
+    --text-dark: #3a1526;
+    --text-muted: #8c526d;
+    --font-heading: 'Baloo 2', cursive, sans-serif;
+    --font-body: 'Nunito', sans-serif;
+}
+
+/* ZERO SCROLL LOCK */
+html, body {
+    width: 100%;
+    height: 100%;
+    height: 100dvh;
+    min-height: 100%;
+    max-height: 100%;
+    overflow: hidden !important;
+    overscroll-behavior: none !important;
+    touch-action: none !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+body {
+    background: radial-gradient(circle at 50% 20%, #ffe4ee 0%, #ffb6ce 60%, #ffa5c2 100%);
+    font-family: var(--font-body);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+}
+
+/* Background Floating Hearts */
+.hearts-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    height: 100dvh;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -40px;
+    user-select: none;
+    animation: floatUp linear infinite;
+    filter: drop-shadow(0 2px 6px rgba(255, 51, 119, 0.25));
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(0.6);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.85;
+    }
+    85% {
+        opacity: 0.85;
+    }
+    100% {
+        transform: translateY(-110vh) rotate(360deg) scale(1.2);
+        opacity: 0;
+    }
+}
+
+/* Mobile Viewport Container */
+.mobile-viewport {
+    width: 100%;
+    max-width: 410px;
+    height: 100%;
+    max-height: 96vh;
+    max-height: 96dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+}
+
+/* Phone Card */
+.phone-card {
+    width: 100%;
+    height: 100%;
+    max-height: 680px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 32px;
+    padding: 14px 16px 10px 16px;
+    box-shadow: 
+        0 20px 45px rgba(216, 27, 96, 0.22),
+        0 4px 14px rgba(255, 102, 153, 0.16),
+        inset 0 0 0 3px rgba(255, 255, 255, 0.95);
+    border: 3px solid #ffb3cc;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Progress Header */
+.card-header {
+    width: 100%;
+    margin-bottom: 2px;
+    flex-shrink: 0;
+}
+
+.progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3px;
+    padding: 0 4px;
+}
+
+.badge {
+    background: #ffecf3;
+    color: var(--deep-pink);
+    font-size: 12.5px;
+    font-weight: 800;
+    padding: 2px 12px;
+    border-radius: 20px;
+    border: 1.5px solid #ffbcd3;
+}
+
+.badge-icon {
+    font-size: 16px;
+}
+
+.progress-bar-wrap {
+    width: 100%;
+    height: 7px;
+    background: #ffe3ee;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6699, #ff1493, #ff3377);
+    border-radius: 10px;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 8px rgba(255, 20, 147, 0.45);
+}
+
+/* =========================================================
+   CHARACTER PORTRAIT SECTION — BIGGER, SCALED & CENTERED
+   ========================================================= */
+.character-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex: 1 1 auto;
+    min-height: 190px;
+    max-height: 240px;
+    margin: 2px 0;
+}
+
+.character-frame {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    position: relative;
+}
+
+.character-img {
+    max-width: 95%;
+    max-height: 230px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 22px rgba(255, 51, 119, 0.25));
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    margin: 0 auto;
+    display: block;
+}
+
+.character-img.pop-anim {
+    animation: charPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes charPop {
+    0% { transform: scale(0.93); opacity: 0.85; }
+    50% { transform: scale(1.04); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* =========================================================
+   CALLOUT MESSAGE CHAT BUBBLE FOR QUESTION
+   ========================================================= */
+.question-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.chat-bubble-tail-wrap {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+}
+
+.callout-chat-bubble {
+    width: 100%;
+    background: linear-gradient(145deg, #ffffff 0%, #fff4f8 100%);
+    border: 2.5px solid var(--bubble-border);
+    border-radius: 22px;
+    padding: 9px 14px;
+    box-shadow: 
+        0 6px 18px rgba(255, 51, 119, 0.16),
+        inset 0 0 0 1.5px rgba(255, 255, 255, 0.9);
+    position: relative;
+    text-align: center;
+    animation: bubbleBounce 2.5s infinite ease-in-out;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Chat bubble cute pointer tail */
+.callout-chat-bubble::before {
+    content: '';
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 11px 11px 11px;
+    border-style: solid;
+    border-color: transparent transparent var(--bubble-border) transparent;
+}
+
+.callout-chat-bubble::after {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 0 9px 9px 9px;
+    border-style: solid;
+    border-color: transparent transparent #ffffff transparent;
+}
+
+@keyframes bubbleBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+}
+
+.bubble-heart-badge {
+    position: absolute;
+    top: -12px;
+    right: 12px;
+    font-size: 16px;
+    background: #ffecf3;
+    border-radius: 50%;
+    padding: 1px 4px;
+    box-shadow: 0 2px 6px rgba(255, 51, 119, 0.2);
+}
+
+.question-text {
+    font-family: var(--font-heading);
+    font-size: 17.5px;
+    font-weight: 800;
+    color: var(--text-dark);
+    text-align: center;
+    line-height: 1.35;
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+}
+
+.callout-chat-bubble.pop-anim {
+    animation: bubblePop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes bubblePop {
+    0% { transform: scale(0.92); opacity: 0.85; }
+    50% { transform: scale(1.04); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Button Layout */
+.btn-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 9px;
+    position: relative;
+    min-height: 108px;
+}
+
+.btn {
+    width: 100%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-size: 15.5px;
+    font-weight: 800;
+    padding: 12px 14px;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.18s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.18s ease;
+    text-align: center;
+}
+
+/* YES BUTTON */
+.yes-btn {
+    background: linear-gradient(135deg, #ff3377 0%, #ff1493 60%, #d81b60 100%);
+    color: var(--white);
+    box-shadow: 0 6px 20px rgba(255, 51, 119, 0.38), 0 2px 6px rgba(0, 0, 0, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    position: relative;
+    z-index: 20;
+}
+
+.yes-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 24px rgba(255, 51, 119, 0.48);
+}
+
+.yes-btn:active {
+    transform: translateY(2px) scale(0.97);
+}
+
+/* NO BUTTON */
+.no-btn {
+    background: #fdf2f7;
+    color: #9c27b0;
+    border: 2px solid #f8bbd0;
+    box-shadow: 0 4px 12px rgba(156, 39, 176, 0.1);
+    font-size: 15px;
+    position: relative;
+    z-index: 20;
+}
+
+.no-btn:hover {
+    background: #fae3ee;
+    color: #7b1fa2;
+}
+
+.no-btn:active {
+    transform: scale(0.96);
+}
+
+/* RUNAWAY NO BUTTON: 100% VISIBLE, NEVER CUTS, NEVER DISAPPEARS */
+.no-btn.runaway-mode {
+    position: fixed !important;
+    z-index: 9999999 !important;
+    width: auto !important;
+    max-width: 175px !important;
+    min-width: 110px !important;
+    padding: 10px 18px !important;
+    font-size: 14.5px !important;
+    box-shadow: 0 8px 25px rgba(216, 27, 96, 0.45) !important;
+    border: 2.5px solid #ff3377 !important;
+    background: #fff0f5 !important;
+    color: #c2185b !important;
+    touch-action: none !important;
+    pointer-events: auto !important;
+    margin: 0 !important;
+    transform-origin: center center !important;
+    transition: left 0.16s cubic-bezier(0.1, 0.8, 0.2, 1), 
+                top 0.16s cubic-bezier(0.1, 0.8, 0.2, 1), 
+                transform 0.16s ease !important;
+}
+
+/* =========================================================
+   WIN CELEBRATION SCREEN WITH "final-win.png"
+   ========================================================= */
+.win-screen {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+    animation: popIn 0.45s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.88); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+.final-win-frame {
+    width: 100%;
+    flex: 1 1 auto;
+    max-height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+}
+
+.final-win-img {
+    max-width: 95%;
+    max-height: 235px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 22px rgba(255, 51, 119, 0.3));
+    animation: winImgPop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes winImgPop {
+    0% { transform: scale(0.8); opacity: 0.5; }
+    60% { transform: scale(1.06); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.win-heading {
+    font-family: var(--font-heading);
+    font-size: 21px;
+    font-weight: 900;
+    color: var(--deep-pink);
+    margin-bottom: 5px;
+    text-shadow: 0 2px 10px rgba(255, 51, 119, 0.25);
+}
+
+.win-card-box {
+    background: linear-gradient(145deg, #fff5f8, #ffeaf2);
+    border-radius: 20px;
+    padding: 12px 12px;
+    border: 2px dashed #ff99bb;
+    margin: 6px 0 10px 0;
+    box-shadow: 0 6px 16px rgba(255, 102, 153, 0.12);
+}
+
+.win-text-1 {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #4a152d;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.win-text-highlight {
+    font-family: var(--font-heading);
+    font-size: 16.5px;
+    font-weight: 900;
+    color: #ff0066;
+    letter-spacing: 0.5px;
+    animation: rainbowGlow 1.8s infinite alternate;
+}
+
+@keyframes rainbowGlow {
+    0% { text-shadow: 0 0 8px #ff80ab; transform: scale(1); }
+    100% { text-shadow: 0 0 16px #ff1493; transform: scale(1.03); }
+}
+
+.restart-btn {
+    background: #ffffff;
+    color: var(--deep-pink);
+    border: 2px solid #ff80ab;
+    padding: 10px 18px;
+    font-size: 14px;
+    font-weight: 800;
+    margin: 0 auto;
+    width: auto;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(255, 102, 153, 0.18);
+}
+
+.restart-btn:hover {
+    background: #ffeef4;
+    transform: translateY(-2px);
+}
+
+/* =========================================================
+   SUBTLE, CLEAN INSTAGRAM ATTRIBUTION FOOTER
+   ========================================================= */
+.app-credit {
+    font-size: 11.5px;
+    color: #c98a9f;
+    text-align: center;
+    margin-top: 6px;
+    letter-spacing: 0.4px;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.app-credit a {
+    color: #b05c7c;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.2s ease;
+}
+
+.app-credit a:hover {
+    color: var(--deep-pink);
+    text-decoration: underline;
+}
+
+/* Confetti */
+.confetti-piece {
+    position: fixed;
+    z-index: 999999;
+    pointer-events: none;
+    animation: confettiFall linear forwards;
+}
+
+@keyframes confettiFall {
+    0% { transform: translateY(-30px) rotate(0deg) scale(0.8); opacity: 1; }
+    100% { transform: translateY(105vh) rotate(720deg) scale(1.1); opacity: 0; }
+}
+
+/* Small Screen Adjustments */
+@media (max-height: 600px) {
+    .phone-card {
+        padding: 10px 12px 8px 12px;
+        max-height: 98vh;
+    }
+    .character-section {
+        min-height: 150px;
+    }
+    .character-img {
+        max-height: 150px;
+    }
+    .question-text {
+        font-size: 15.5px;
+        min-height: 38px;
+    }
+    .btn {
+        padding: 9px 12px;
+        font-size: 14px;
+    }
+}
